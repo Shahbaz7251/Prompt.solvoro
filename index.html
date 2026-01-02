@@ -71,6 +71,88 @@
             background: rgba(248, 247, 245, 0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            transition: all 0.5s ease;
+        }
+
+        .dark .glass-header {
+            background: rgba(24, 20, 17, 0.8);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dark Mode Global Overrides */
+        .dark body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark .bg-white {
+            background-color: #1a1a1a !important;
+        }
+
+        .dark .bg-background-light {
+            background-color: #121212 !important;
+        }
+
+        .dark .text-background-dark {
+            color: #ffffff !important;
+        }
+
+        .dark .text-gray-900,
+        .dark .text-gray-800,
+        .dark .text-gray-700 {
+            color: #f1f1f1 !important;
+        }
+
+        .dark .text-gray-600,
+        .dark .text-gray-500 {
+            color: #a0a0a0 !important;
+        }
+
+        .dark .text-gray-400 {
+            color: #71717a !important;
+        }
+
+        .dark .text-gray-300 {
+            color: #52525b !important;
+        }
+
+        .dark .border-border-base,
+        .dark .border-gray-100 {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .dark .custom-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark #promptOutput,
+        .dark #promptInput {
+            color: #e4e4e7 !important;
+        }
+
+        .dark #promptInput::placeholder {
+            color: #52525b !important;
+        }
+
+        .dark .bg-[#fafaf9] {
+            background-color: #242427 !important;
+        }
+
+        .dark div.lg\:divide-x>div {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .dark .border-dashed {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .dark #copyBtn {
+            background-color: #2a2a2e !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .dark #copyBtn span.material-symbols-outlined {
+            color: #a0a0a0 !important;
         }
 
         .stagger-1 {
@@ -110,6 +192,142 @@
         .custom-shadow {
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
         }
+
+        .mode-card {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid transparent;
+        }
+
+        .mode-card.active {
+            border-color: #f27f0d;
+            background-color: rgba(242, 127, 13, 0.05);
+        }
+
+        .dark .mode-card.active {
+            background-color: rgba(242, 127, 13, 0.1);
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 1rem 1.25rem;
+            border-radius: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .bubble-ai {
+            align-self: flex-start;
+            background-color: #ffffff;
+            border: 1px solid #e6e0db;
+            color: #181411;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .dark .bubble-ai {
+            background-color: #1a1a1a;
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .bubble-user {
+            align-self: flex-end;
+            background-color: #f27f0d;
+            color: #ffffff;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .chat-message-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .typing-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #f27f0d;
+            border-radius: 50%;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingAnimation {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 640px) {
+            .chat-bubble {
+                max-width: 92%;
+                padding: 0.875rem 1rem;
+                font-size: 0.875rem;
+                line-height: 1.5;
+            }
+
+            .mode-card {
+                padding: 1rem !important;
+            }
+
+            .mode-card .w-12 {
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+            }
+
+            .mode-card h3 {
+                font-size: 0.875rem !important;
+            }
+
+            .mode-card p {
+                font-size: 0.75rem !important;
+            }
+
+            #toolView {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            #chatHistory {
+                padding: 1.5rem 1rem !important;
+            }
+
+            .chat-message-container {
+                gap: 0.25rem;
+            }
+
+            #promptInput {
+                padding: 0.75rem 3.5rem 0.75rem 1rem !important;
+                font-size: 1rem !important;
+                min-height: 80px !important;
+            }
+
+            .absolute.right-4.bottom-4 {
+                right: 0.75rem !important;
+                bottom: 0.75rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -119,7 +337,7 @@
     <header
         class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-border-base/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2.5 group">
+            <a href="javascript:void(0)" onclick="showLandingView()" class="flex items-center gap-2.5 group">
                 <div
                     class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <span class="material-symbols-outlined text-primary text-2xl">auto_fix_high</span>
@@ -127,19 +345,10 @@
                 <span class="text-xl font-extrabold tracking-tight text-background-dark">PromptEnhancer</span>
             </a>
 
-            <nav class="hidden md:flex items-center gap-10">
-                <a class="text-sm font-semibold text-gray-600 hover:text-primary transition-all hover:-translate-y-0.5"
-                    href="#how-it-works">How it works</a>
-                <a class="text-sm font-semibold text-gray-600 hover:text-primary transition-all hover:-translate-y-0.5"
-                    href="#examples">Examples</a>
-                <a class="text-sm font-semibold text-gray-600 hover:text-primary transition-all hover:-translate-y-0.5"
-                    href="#feedback">Feedback</a>
-            </nav>
-
             <div class="flex items-center gap-4">
-                <button
-                    class="hidden sm:inline-flex text-sm font-bold text-gray-900 px-6 py-2.5 rounded-full border border-border-base hover:bg-white transition-all active:scale-95">Sign
-                    In</button>
+                <button onclick="showToolView()"
+                    class="hidden sm:inline-flex text-sm font-bold text-white bg-primary px-6 py-2.5 rounded-full hover:bg-primary-hover transition-all active:scale-95 shadow-lg shadow-primary/20">Improve
+                    Prompt</button>
                 <button id="mobileMenuBtn"
                     class="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                     <span class="material-symbols-outlined">menu</span>
@@ -176,278 +385,318 @@
 
     <main class="pt-32 pb-20 overflow-hidden">
 
-        <!-- Hero Section -->
-        <section class="max-w-4xl mx-auto px-6 text-center mb-16 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
-            <div
-                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border-base mb-6 sm:mb-8 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.1em] text-gray-500">v2.0 Now Live</span>
-            </div>
+        <div id="landingView" class="transition-all duration-500">
+            <!-- Hero Section -->
+            <section class="max-w-4xl mx-auto px-6 text-center mb-16 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
 
-            <h1 class="text-5xl sm:text-8xl font-black leading-[1.05] tracking-tight text-background-dark mb-6 sm:mb-8">
-                Speak AI <span class="relative inline-block text-primary">
-                    fluently.
-                    <svg class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3 text-primary/20"
-                        viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                        <path d="M2 10C30 4.5 90 -2.5 198 10" stroke="currentColor" stroke-width="4"
-                            stroke-linecap="round" />
-                    </svg>
-                </span>
-            </h1>
+                <h1 id="magicHero"
+                    class="text-5xl sm:text-8xl font-black leading-[1.05] tracking-tight text-background-dark mb-6 sm:mb-8 cursor-pointer select-none transition-transform active:scale-95">
+                    Speak AI <span class="relative inline-block text-primary">
+                        fluently.
+                        <svg class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3 text-primary/20"
+                            viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
+                            <path d="M2 10C30 4.5 90 -2.5 198 10" stroke="currentColor" stroke-width="4"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h1>
 
-            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed">
-                Stop guessing. Turn your rough thoughts into precise, structured prompts that LLMs actually understand
-                and execute perfectly.
-            </p>
-        </section>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed mb-12">
+                    Stop guessing. Turn your rough thoughts into precise, structured prompts that LLMs actually
+                    understand
+                    and execute perfectly.
+                </p>
 
-        <!-- Tool Section -->
-        <section class="max-w-6xl mx-auto px-4 sm:px-6 mb-32 opacity-0 animate-fade-in-up stagger-2">
-            <div class="bg-white rounded-[2rem] border border-border-base overflow-hidden custom-shadow">
-                <div class="grid grid-cols-1 lg:grid-cols-2 lg:divide-x divide-border-base min-h-[500px]">
-
-                    <!-- Input Pane -->
-                    <div class="p-8 sm:p-10 flex flex-col bg-white">
-                        <div class="flex items-center justify-between mb-8">
-                            <label
-                                class="flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em]">
-                                <span class="material-symbols-outlined text-sm">edit_note</span>
-                                Input: Rough Draft
-                            </label>
-                            <button id="clearBtn"
-                                class="text-[11px] font-bold text-primary hover:text-primary-hover uppercase tracking-[0.1em] transition-colors opacity-0 pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto">
-                                Clear
-                            </button>
-                        </div>
-
-                        <textarea id="promptInput"
-                            class="flex-1 w-full resize-none border-0 p-0 text-xl text-gray-800 placeholder:text-gray-300 focus:ring-0 bg-transparent leading-relaxed"
-                            placeholder="e.g., Write a blog post about coffee beans and how to roast them at home..."></textarea>
-
-                        <div class="mt-8 pt-8 border-t border-dashed border-gray-100 flex justify-between items-center">
-                            <span id="charCount" class="text-xs font-semibold text-gray-400">0 characters</span>
-                        </div>
-                    </div>
-
-                    <!-- Output Pane -->
-                    <div class="p-8 sm:p-10 flex flex-col bg-[#fafaf9] relative group">
-                        <div class="flex items-center justify-between mb-8">
-                            <label
-                                class="flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em]">
-                                <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                                Output: Optimized Prompt
-                            </label>
-                        </div>
-
-                        <div id="promptOutput"
-                            class="flex-1 font-mono text-sm leading-8 text-gray-600 overflow-y-auto no-scrollbar">
-                            <p class="italic text-gray-300 select-none transition-opacity duration-300">Waiting for
-                                input to generate optimized structure...</p>
-                        </div>
-
-                        <!-- Copy Button -->
-                        <div class="absolute top-8 right-8">
-                            <button id="copyBtn"
-                                class="flex items-center gap-2 p-2.5 bg-white rounded-xl border border-border-base hover:border-primary/50 hover:bg-white transition-all active:scale-90 opacity-0 group-hover:opacity-100 disabled:opacity-0"
-                                title="Copy to clipboard">
-                                <span id="copyIcon"
-                                    class="material-symbols-outlined text-xl text-gray-500">content_copy</span>
-                                <span id="copyText" class="hidden text-xs font-bold text-primary px-1">COPIED!</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Action Bar -->
-                <div
-                    class="bg-white p-6 sm:px-10 sm:py-8 border-t border-border-base flex justify-center lg:justify-end">
-                    <button id="improveBtn"
-                        class="group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-white text-lg font-bold py-4 px-10 rounded-2xl shadow-lg shadow-primary/20 transition-all duration-300 w-full sm:w-auto transform active:scale-[0.98]">
+                <div class="flex justify-center">
+                    <button onclick="showToolView()"
+                        class="group relative flex items-center justify-center gap-4 bg-primary hover:bg-primary-hover text-white text-xl sm:text-2xl font-black py-6 px-12 rounded-[2rem] shadow-2xl shadow-primary/30 transition-all duration-300 transform active:scale-[0.98] hover:-translate-y-1">
                         <span>Improve Prompt</span>
                         <span
-                            class="material-symbols-outlined group-hover:translate-x-1.5 transition-transform duration-300">arrow_forward</span>
+                            class="material-symbols-outlined text-3xl group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
                     </button>
                 </div>
-            </div>
-        </section>
-
-        <!-- Process Section -->
-        <section class="max-w-5xl mx-auto px-6 mb-24 sm:mb-40" id="how-it-works">
-            <div class="text-center mb-12 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
-                <h2 class="text-3xl sm:text-4xl font-black mb-4">Science, not magic.</h2>
-                <p class="text-gray-500 font-medium text-base sm:text-lg">We structure your intent into a format LLMs
-                    are trained to prioritize.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-12 sm:gap-16">
-                <!-- Step 1 -->
-                <div
-                    class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-2">
-                    <span
-                        class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">01</span>
-                    <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Input Context</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Paste your rough idea,
-                        fragmented sentences, or bullet points. Don't worry about grammar.</p>
-                </div>
-                <!-- Step 2 -->
-                <div
-                    class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-3">
-                    <span
-                        class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">02</span>
-                    <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Structural Enhancement</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Our engine assigns roles,
-                        defines constraints, and clarifies output formats for maximum precision.</p>
-                </div>
-                <!-- Step 3 -->
-                <div
-                    class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-4">
-                    <span
-                        class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">03</span>
-                    <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Execute</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Copy the result directly
-                        into ChatGPT, Claude, or Midjourney. Get the answer you actually wanted.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section class="bg-white border-y border-border-base/50 py-20 sm:py-32 mb-20 sm:mb-32">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-8 mb-12 sm:mb-16">
-                    <div class="text-center sm:text-left">
-                        <h2 class="text-3xl sm:text-4xl font-black mb-2">Community Feedback</h2>
-                        <p class="text-gray-500 font-medium">Loved by prompt engineers worldwide.</p>
-                    </div>
-                    <a class="text-primary font-bold hover:underline underline-offset-8 transition-all" href="#">View
-                        all reviews</a>
+            </section>
+            <!-- Process Section -->
+            <section class="max-w-5xl mx-auto px-6 mb-24 sm:mb-40" id="how-it-works">
+                <div class="text-center mb-12 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
+                    <h2 class="text-3xl sm:text-4xl font-black mb-4">Science, not magic.</h2>
+                    <p class="text-gray-500 font-medium text-base sm:text-lg">We structure your intent into a format
+                        LLMs
+                        are trained to prioritize.</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
+                <div class="grid md:grid-cols-3 gap-12 sm:gap-16">
+                    <!-- Step 1 -->
                     <div
-                        class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
-                        <div class="flex gap-1 text-primary mb-6">
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
+                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-2">
+                        <span
+                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">01</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Input Context</h3>
+                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Paste your rough idea,
+                            fragmented sentences, or bullet points. Don't worry about grammar.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div
+                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-3">
+                        <span
+                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">02</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Structural Enhancement</h3>
+                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Our engine assigns
+                            roles,
+                            defines constraints, and clarifies output formats for maximum precision.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div
+                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-4">
+                        <span
+                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">03</span>
+                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Execute</h3>
+                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Copy the result
+                            directly
+                            into ChatGPT, Claude, or Midjourney. Get the answer you actually wanted.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="bg-white border-y border-border-base/50 py-20 sm:py-32 mb-20 sm:mb-32">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div
+                        class="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-8 mb-12 sm:mb-16">
+                        <div class="text-center sm:text-left">
+                            <h2 class="text-3xl sm:text-4xl font-black mb-2">Community Feedback</h2>
+                            <p class="text-gray-500 font-medium">Loved by prompt engineers worldwide.</p>
                         </div>
-                        <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"The difference is night and day. My
-                            marketing copy generation went from generic fluff to usable drafts instantly."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                <img alt="Sarah Jenkins" class="w-full h-full object-cover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dqnlyWWjOlYdxXfysNVBBQLmgDORTN-P7ZsAOwiiAQvRNQjUMlg2twiSDyuoROB4BC9L5XXfrLWzL-GWNYzJBHlAPhaS3ZXNGVFXJHqPAYq36jNTUBKkNF694sRFVO3oZAyqT98Q00hGZi0QWS_ghIUNJzrsZcZvPlzX3ImpvMlZFzOjaTgeLbTZW8Az3H8z7tofNsuOmVpImjR6Wxy9Mmew0ONb5aM-76KETfLriD2xNmm38AXBNEPP7ZTG8Tbtm30TnPGKme0" />
+                        <a class="text-primary font-bold hover:underline underline-offset-8 transition-all"
+                            href="#">View
+                            all reviews</a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        <div
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            <div class="flex gap-1 text-primary mb-6">
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
                             </div>
-                            <div>
-                                <p class="text-sm font-extrabold">Sarah Jenkins</p>
-                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Content
-                                    Marketer</p>
+                            <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"The difference is night and
+                                day. My
+                                marketing copy generation went from generic fluff to usable drafts instantly."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
+                                    <img alt="Sarah Jenkins" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dqnlyWWjOlYdxXfysNVBBQLmgDORTN-P7ZsAOwiiAQvRNQjUMlg2twiSDyuoROB4BC9L5XXfrLWzL-GWNYzJBHlAPhaS3ZXNGVFXJHqPAYq36jNTUBKkNF694sRFVO3oZAyqT98Q00hGZi0QWS_ghIUNJzrsZcZvPlzX3ImpvMlZFzOjaTgeLbTZW8Az3H8z7tofNsuOmVpImjR6Wxy9Mmew0ONb5aM-76KETfLriD2xNmm38AXBNEPP7ZTG8Tbtm30TnPGKme0" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-extrabold">Sarah Jenkins</p>
+                                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Content
+                                        Marketer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            <div class="flex gap-1 text-primary mb-6">
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                            </div>
+                            <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"I use this for coding prompts.
+                                It
+                                forces me to be specific, which makes the AI hallucinate way less."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
+                                    <img alt="David Chen" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFle5x2iQhRWnKY1cIeOAHz7aRSnOEGB9vrxqFG_WQaezyPhYAC75-u1J2qEIxYvKZmZCzcNIVKTZkyU3FUParN5o7u9pIaRa-kahpjHmmddzm-aw7G60IyjKMBPQAvL78ZLIvZ9DvOBcOdChbS0HQeHjXcfzSEjeTO1IX3kraXgn6UTGkMvMhYuCi7c9_D8pnIV6sVREgMU-kahRS2G6kC_8pG5qk92SMCS1wylxYAGOOgJ_cMEmtAKS6S7TSaXrrilIdIGHD84Y" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-extrabold">David Chen</p>
+                                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full Stack
+                                        Dev
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            <div class="flex gap-1 text-primary mb-6">
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                                <span class="material-symbols-outlined text-sm fill-current">star</span>
+                            </div>
+                            <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"Simple, fast, and no
+                                unnecessary
+                                bloat. It does one thing and does it extremely well."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
+                                    <img alt="Elena Rodriguez" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDByi39tjX8_3Ahct9Fi428zfgzZZzFd5aSODaiEryFvKGoNfydhfCaTEHLua4SRyQscj-Oqg1sPlBkEFmjAXFGgUScx50RixdWHwVhHR91Z8yJ9l__ETRRt_nokq0xs30LN7JlDS2euzgh7Zwy8tIQCu0Ew0xhxjaVFuK4UG4EZMW0sFsYK2Gpu9wRcoFlYAnXrcAYbmhzvh8o33ccjTdx9sQyfwIyItrMCZoxL1TWHyBTl85t9g7xu-4vnstxs_0EmKepkFZJTkg" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-extrabold">Elena Rodriguez</p>
+                                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Product
+                                        Designer</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
+                    <!-- Feedback Input -->
+                    <div class="mt-20 max-w-xl mx-auto" id="feedback">
+                        <form class="relative group">
+                            <input
+                                class="w-full pl-8 pr-28 py-5 rounded-full border border-border-base bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-sm text-sm font-medium"
+                                placeholder="Have a suggestion? Tell us here..." type="text" />
+                            <button
+                                class="absolute right-2 top-2 bottom-2 bg-background-dark text-white px-8 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 shadow-lg">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="max-w-4xl mx-auto px-6 mb-20 opacity-0 animate-fade-in-up stagger-1">
+                <div
+                    class="bg-background-dark rounded-[2.5rem] p-10 sm:p-20 text-center text-white relative overflow-hidden group">
+                    <!-- Abstract Accents -->
                     <div
-                        class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
-                        <div class="flex gap-1 text-primary mb-6">
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                        </div>
-                        <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"I use this for coding prompts. It
-                            forces me to be specific, which makes the AI hallucinate way less."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                <img alt="David Chen" class="w-full h-full object-cover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFle5x2iQhRWnKY1cIeOAHz7aRSnOEGB9vrxqFG_WQaezyPhYAC75-u1J2qEIxYvKZmZCzcNIVKTZkyU3FUParN5o7u9pIaRa-kahpjHmmddzm-aw7G60IyjKMBPQAvL78ZLIvZ9DvOBcOdChbS0HQeHjXcfzSEjeTO1IX3kraXgn6UTGkMvMhYuCi7c9_D8pnIV6sVREgMU-kahRS2G6kC_8pG5qk92SMCS1wylxYAGOOgJ_cMEmtAKS6S7TSaXrrilIdIGHD84Y" />
-                            </div>
-                            <div>
-                                <p class="text-sm font-extrabold">David Chen</p>
-                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full Stack Dev
-                                </p>
-                            </div>
-                        </div>
+                        class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] -mr-48 -mt-48 transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] -ml-48 -mb-48 transition-transform duration-700 group-hover:scale-110">
                     </div>
 
-                    <!-- Card 3 -->
-                    <div
-                        class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
-                        <div class="flex gap-1 text-primary mb-6">
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
-                            <span class="material-symbols-outlined text-sm fill-current">star</span>
+                    <div class="relative z-10">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8 animate-float">
+                            <span class="material-symbols-outlined text-4xl text-primary">mail</span>
                         </div>
-                        <p class="text-gray-700 font-semibold mb-8 leading-relaxed">"Simple, fast, and no unnecessary
-                            bloat. It does one thing and does it extremely well."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                <img alt="Elena Rodriguez" class="w-full h-full object-cover"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDByi39tjX8_3Ahct9Fi428zfgzZZzFd5aSODaiEryFvKGoNfydhfCaTEHLua4SRyQscj-Oqg1sPlBkEFmjAXFGgUScx50RixdWHwVhHR91Z8yJ9l__ETRRt_nokq0xs30LN7JlDS2euzgh7Zwy8tIQCu0Ew0xhxjaVFuK4UG4EZMW0sFsYK2Gpu9wRcoFlYAnXrcAYbmhzvh8o33ccjTdx9sQyfwIyItrMCZoxL1TWHyBTl85t9g7xu-4vnstxs_0EmKepkFZJTkg" />
-                            </div>
-                            <div>
-                                <p class="text-sm font-extrabold">Elena Rodriguez</p>
-                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Product
-                                    Designer</p>
-                            </div>
+                        <h2 class="text-4xl sm:text-5xl font-black mb-6">Master the art of prompting.</h2>
+                        <p class="text-gray-400 mb-12 max-w-md mx-auto text-lg font-medium leading-relaxed">Get weekly
+                            tips
+                            on how to talk to AI models effectively. No spam, just prompts.</p>
+
+                        <form
+                            class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto p-2 bg-white/5 rounded-2xl border border-white/10">
+                            <input
+                                class="flex-1 bg-transparent border-0 text-white placeholder:text-gray-600 rounded-xl px-4 py-4 focus:ring-0 text-sm font-medium"
+                                placeholder="email@domain.com" type="email" />
+                            <button
+                                class="bg-primary hover:bg-primary-hover text-white font-black px-10 py-4 rounded-xl transition-all active:scale-95 shadow-xl shadow-primary/20"
+                                type="button">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="toolView" class="hidden opacity-0 transition-all duration-500 max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div>
+                    <h2 class="text-3xl font-black text-background-dark mb-2">Optimize Your Prompt</h2>
+                    <p class="text-gray-500 font-medium">Transform your rough ideas into powerful instructions.</p>
+                </div>
+                <button onclick="showLandingView()"
+                    class="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Back to Home
+                </button>
+            </div>
+
+            <!-- Mode Selection -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div id="modeOptimize" onclick="setMode('optimize')"
+                    class="mode-card active p-6 rounded-2xl bg-white border border-border-base cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">auto_fix_high</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">I have a prompt</h3>
+                            <p class="text-sm text-gray-500">Optimize existing prompt</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Feedback Input -->
-                <div class="mt-20 max-w-xl mx-auto" id="feedback">
-                    <form class="relative group">
-                        <input
-                            class="w-full pl-8 pr-28 py-5 rounded-full border border-border-base bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-sm text-sm font-medium"
-                            placeholder="Have a suggestion? Tell us here..." type="text" />
-                        <button
-                            class="absolute right-2 top-2 bottom-2 bg-background-dark text-white px-8 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 shadow-lg">Send</button>
-                    </form>
+                <div id="modeGenerate" onclick="setMode('generate')"
+                    class="mode-card p-6 rounded-2xl bg-white border border-border-base cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-500">lightbulb</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">I have a topic only</h3>
+                            <p class="text-sm text-gray-500">Create prompt from idea</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Newsletter Section -->
-        <section class="max-w-4xl mx-auto px-6 mb-20 opacity-0 animate-fade-in-up stagger-1">
-            <div
-                class="bg-background-dark rounded-[2.5rem] p-10 sm:p-20 text-center text-white relative overflow-hidden group">
-                <!-- Abstract Accents -->
+            <!-- Tool Section (Chat UI) -->
+            <section class="max-w-4xl mx-auto">
                 <div
-                    class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] -mr-48 -mt-48 transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <div
-                    class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] -ml-48 -mb-48 transition-transform duration-700 group-hover:scale-110">
-                </div>
+                    class="bg-white rounded-[2rem] border border-border-base overflow-hidden custom-shadow flex flex-col min-h-[600px] max-h-[800px]">
 
-                <div class="relative z-10">
-                    <div
-                        class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8 animate-float">
-                        <span class="material-symbols-outlined text-4xl text-primary">mail</span>
+                    <!-- Chat History -->
+                    <div id="chatHistory"
+                        class="flex-1 overflow-y-auto p-6 sm:p-10 flex flex-col no-scrollbar bg-[#fafaf9]">
+                        <div class="chat-message-container" id="chatContainer">
+                            <!-- Initial Message -->
+                            <div class="chat-bubble bubble-ai" id="initialMessage">
+                                👋 Welcome! I'm your Prompt Architect. Paste your existing prompt below, and I'll
+                                optimize it for maximum performance.
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-4xl sm:text-5xl font-black mb-6">Master the art of prompting.</h2>
-                    <p class="text-gray-400 mb-12 max-w-md mx-auto text-lg font-medium leading-relaxed">Get weekly tips
-                        on how to talk to AI models effectively. No spam, just prompts.</p>
 
-                    <form
-                        class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto p-2 bg-white/5 rounded-2xl border border-white/10">
-                        <input
-                            class="flex-1 bg-transparent border-0 text-white placeholder:text-gray-600 rounded-xl px-4 py-4 focus:ring-0 text-sm font-medium"
-                            placeholder="email@domain.com" type="email" />
-                        <button
-                            class="bg-primary hover:bg-primary-hover text-white font-black px-10 py-4 rounded-xl transition-all active:scale-95 shadow-xl shadow-primary/20"
-                            type="button">
-                            Subscribe
-                        </button>
-                    </form>
+                    <!-- Input Area -->
+                    <div class="p-6 sm:px-10 border-t border-border-base bg-white">
+                        <div class="relative group">
+                            <textarea id="promptInput"
+                                class="w-full resize-none border-2 border-border-base rounded-2xl p-4 pr-16 text-lg text-gray-800 placeholder:text-gray-300 focus:ring-0 focus:border-primary bg-transparent leading-relaxed min-h-[100px]"
+                                placeholder="Paste your existing prompt here..."></textarea>
+
+                            <div class="absolute right-4 bottom-4 flex items-center gap-2">
+                                <button id="clearBtn"
+                                    class="p-2 text-gray-400 hover:text-primary transition-colors opacity-0 pointer-events-none data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto"
+                                    title="Clear input">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                                <button id="improveBtn"
+                                    class="bg-primary hover:bg-primary-hover text-white p-3 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span class="material-symbols-outlined">send</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center px-2">
+                            <span id="charCount" class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">0
+                                characters</span>
+                            <div class="hidden" id="copyContainer">
+                                <button id="copyBtn"
+                                    class="flex items-center gap-2 text-xs font-bold text-primary hover:text-primary-hover transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span>
+                                    Copy Latest Result
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -477,27 +726,129 @@
     <script>
         // CONFIGURATION: Set your OpenRouter API key and model here
         const CONFIG = {
-            API_KEY: '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',
+            API_KEY: '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',
             MODEL: 'openai/gpt-oss-120b',
-            MAX_TOKENS: 500, // Medium preference
+            MAX_TOKENS: 100000, // Updated to 100k
             API_URL: 'https://openrouter.ai/api/v1/chat/completions'
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            let currentMode = 'optimize';
+            let chatHistory = [];
+            let questionCount = 0;
+            let currentConversation = [];
+
             const promptInput = document.getElementById('promptInput');
             const clearBtn = document.getElementById('clearBtn');
             const charCount = document.getElementById('charCount');
-            const copyBtn = document.getElementById('copyBtn');
-            const copyIcon = document.getElementById('copyIcon');
-            const copyText = document.getElementById('copyText');
-            const promptOutput = document.getElementById('promptOutput');
+            const chatContainer = document.getElementById('chatContainer');
+            const chatHistoryEl = document.getElementById('chatHistory');
             const improveBtn = document.getElementById('improveBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const copyContainer = document.getElementById('copyContainer');
+            const initialMessage = document.getElementById('initialMessage');
+
+            const modeOptimize = document.getElementById('modeOptimize');
+            const modeGenerate = document.getElementById('modeGenerate');
 
             // Mobile Menu Logic
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const closeMenuBtn = document.getElementById('closeMenuBtn');
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const magicHero = document.getElementById('magicHero');
+
+            window.setMode = (mode) => {
+                if (currentMode === mode) return;
+                currentMode = mode;
+
+                // Reset state
+                chatContainer.innerHTML = '';
+                questionCount = 0;
+                currentConversation = [];
+                promptInput.value = '';
+                updateCharCount();
+                copyContainer.classList.add('hidden');
+
+                // Update UI
+                if (mode === 'optimize') {
+                    modeOptimize.classList.add('active');
+                    modeGenerate.classList.remove('active');
+                    promptInput.placeholder = "Paste your existing prompt here...";
+                    addMessage("👋 Welcome! I'm your Prompt Architect. Paste your existing prompt below, and I'll optimize it for maximum performance.", 'ai');
+                } else {
+                    modeOptimize.classList.remove('active');
+                    modeGenerate.classList.add('active');
+                    promptInput.placeholder = "Describe what you want to create...";
+                    addMessage("💡 Let's build a pro prompt from scratch! Tell me your idea, and I'll ask a few questions to make it perfect.", 'ai');
+                }
+            };
+
+            const addMessage = (text, sender) => {
+                const bubble = document.createElement('div');
+                bubble.className = `chat-bubble bubble-${sender}`;
+
+                if (sender === 'ai' && text.includes('ROLE:')) {
+                    bubble.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-sm leading-relaxed">${text}</pre>`;
+                } else {
+                    bubble.textContent = text;
+                }
+
+                chatContainer.appendChild(bubble);
+                chatHistoryEl.scrollTo({ top: chatHistoryEl.scrollHeight, behavior: 'smooth' });
+
+                if (sender === 'ai' && text.includes('ROLE:')) {
+                    copyContainer.classList.remove('hidden');
+                }
+            };
+
+            const addTypingIndicator = () => {
+                const indicator = document.createElement('div');
+                indicator.id = 'typingIndicator';
+                indicator.className = 'chat-bubble bubble-ai typing-indicator';
+                indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+                chatContainer.appendChild(indicator);
+                chatHistoryEl.scrollTo({ top: chatHistoryEl.scrollHeight, behavior: 'smooth' });
+                return indicator;
+            };
+
+            const removeTypingIndicator = (indicator) => {
+                if (indicator) indicator.remove();
+            };
+
+            const updateCharCount = () => {
+                const length = promptInput.value.length;
+                charCount.textContent = `${length} characters`;
+                clearBtn.setAttribute('data-visible', length > 0 ? 'true' : 'false');
+            };
+
+            window.showToolView = () => {
+                const landingView = document.getElementById('landingView');
+                const toolView = document.getElementById('toolView');
+                landingView.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    landingView.classList.add('hidden');
+                    toolView.classList.remove('hidden');
+                    setTimeout(() => {
+                        toolView.classList.remove('opacity-0');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 50);
+                }, 500);
+            };
+
+            window.showLandingView = () => {
+                const landingView = document.getElementById('landingView');
+                const toolView = document.getElementById('toolView');
+                toolView.classList.add('opacity-0');
+                setTimeout(() => {
+                    toolView.classList.add('hidden');
+                    landingView.classList.remove('hidden');
+                    setTimeout(() => {
+                        landingView.classList.remove('opacity-0', 'pointer-events-none');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 50);
+                }, 500);
+            };
 
             const toggleMenu = () => {
                 mobileMenu.classList.toggle('translate-x-full');
@@ -507,34 +858,64 @@
             mobileMenuBtn?.addEventListener('click', toggleMenu);
             closeMenuBtn?.addEventListener('click', toggleMenu);
             mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
+            magicHero?.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
 
-            // Character count & Clear button visibility
-            promptInput.addEventListener('input', () => {
-                const length = promptInput.value.length;
-                charCount.textContent = `${length} characters`;
-                clearBtn.setAttribute('data-visible', length > 0 ? 'true' : 'false');
-            });
-
-            // Clear functionality
+            promptInput.addEventListener('input', updateCharCount);
             clearBtn.addEventListener('click', () => {
                 promptInput.value = '';
-                charCount.textContent = '0 characters';
-                clearBtn.setAttribute('data-visible', 'false');
+                updateCharCount();
                 promptInput.focus();
             });
 
-            // "Improve Prompt" API Integration
             improveBtn.addEventListener('click', async () => {
                 const text = promptInput.value.trim();
                 if (!text) return;
 
-                // Loading State
+                const isExitSignal = /just give me the prompt|skip questions|generate prompt now/i.test(text);
+
+                addMessage(text, 'user');
+                promptInput.value = '';
+                updateCharCount();
+
                 improveBtn.disabled = true;
-                const originalContent = improveBtn.innerHTML;
-                improveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-xl">sync</span><span>Optimizing...</span>';
-                promptOutput.innerHTML = '<div class="flex items-center gap-3 text-gray-400 font-medium px-4"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Analyzing context...</div>';
+                const typingIndicator = addTypingIndicator();
 
                 try {
+                    let systemMsg = "";
+                    if (currentMode === 'optimize') {
+                        systemMsg = `You are a "Prompt Architect". Your ONLY purpose is to transform a rough idea into a comprehensive, high-quality META-PROMPT.
+ALWAYS follow this exact structured format:
+ROLE: [Specialized persona]
+OBJECTIVE: [The end goal]
+CONSTRAINTS: [Rules and boundaries]
+INPUT CONTEXT: [Clarified user input]
+OUTPUT FORMAT: [Guideline for final response]
+TONE & STYLE: [Specific requirements]
+NEVER include meta-commentary.`;
+                    } else {
+                        if (isExitSignal || questionCount >= 3) {
+                            systemMsg = `You are a "Prompt Architect". The user wants to generate a final prompt based on the conversation so far. 
+Make reasonable assumptions for any missing details.
+ALWAYS follow the standard format: ROLE, OBJECTIVE, CONSTRAINTS, INPUT CONTEXT, OUTPUT FORMAT, TONE & STYLE.
+NEVER include meta-commentary.`;
+                        } else {
+                            systemMsg = `You are a "Prompt Architect" helping a user build a prompt. 
+Based on their idea, ask EXACTLY ONE focused question to clarify either:
+1. Target audience
+2. Output format
+3. Tone or style
+Do not ask for more than one thing at a time. Keep it brief. 
+If this is the first message, ask about the target audience.
+Current conversation so far: ${JSON.stringify(currentConversation)}`;
+                        }
+                    }
+
+                    const messages = [
+                        { role: 'system', content: systemMsg },
+                        ...currentConversation,
+                        { role: 'user', content: text }
+                    ];
+
                     const response = await fetch(CONFIG.API_URL, {
                         method: 'POST',
                         headers: {
@@ -546,96 +927,49 @@
                         body: JSON.stringify({
                             model: CONFIG.MODEL,
                             max_tokens: CONFIG.MAX_TOKENS,
-                            messages: [
-                                {
-                                    role: 'system',
-                                    content: `You are a "Prompt Architect". Your ONLY purpose is to transform a rough idea into a comprehensive, high-quality META-PROMPT that will be used by ANOTHER AI to generate the final result.
-
-CRITICAL RULES:
-1. NEVER answer the user's request yourself. (e.g., if user says "write a story", DO NOT write the story; instead, output a prompt that tells an AI how to write that story).
-2. NEVER include explanations, meta-commentary, or analysis.
-3. Use extremely detailed, professional language in the ROLE and CONSTRAINTS sections.
-4. If the user input is a question, do not answer it. Create a prompt that instructs an AI to answer that question with specific expertise and formatting.
-
-ALWAYS follow this exact structured format:
-
-ROLE:
-[Specify a highly specialized persona for the target AI]
-
-OBJECTIVE:
-[The end goal the target AI must achieve]
-
-CONSTRAINTS:
-- [A comprehensive list of strict rules and boundaries for the target AI]
-- [Formatting, tone, and technical limitations]
-- [No hallucinations, no assumptions]
-
-INPUT CONTEXT:
-[A clarified version of the user's raw input]
-
-OUTPUT FORMAT:
-[Detailed guidelines on how the target AI should format its final response]
-
-TONE & STYLE:
-[Specific narrative or technical style requirements]`
-                                },
-                                {
-                                    role: 'user',
-                                    content: text
-                                }
-                            ]
+                            messages: messages
                         })
                     });
 
                     if (!response.ok) throw new Error('API request failed');
 
                     const data = await response.json();
-                    const optimizedPrompt = data.choices[0].message.content;
+                    const aiContent = data.choices[0].message.content;
 
-                    promptOutput.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-sm leading-relaxed text-gray-800">${optimizedPrompt}</pre>`;
+                    removeTypingIndicator(typingIndicator);
+                    addMessage(aiContent, 'ai');
 
-                    // Show Copy UI
-                    copyBtn.disabled = false;
-                    copyBtn.classList.remove('opacity-0');
+                    currentConversation.push({ role: 'user', content: text });
+                    currentConversation.push({ role: 'assistant', content: aiContent });
 
-                    // Smooth scroll to results
-                    if (window.innerWidth < 1024) {
-                        promptOutput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (currentMode === 'generate' && !aiContent.includes('ROLE:') && !isExitSignal) {
+                        questionCount++;
                     }
 
                 } catch (error) {
-                    console.error('Extraction Error:', error);
-                    promptOutput.innerHTML = `<div class="p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-sm font-medium flex items-center gap-3">
-                        <span class="material-symbols-outlined">error</span>
-                        Unable to optimize prompt. Please check your API key or connection.
-                    </div>`;
+                    console.error('API Error:', error);
+                    removeTypingIndicator(typingIndicator);
+                    addMessage("❌ Sorry, I encountered an error. Please check your connection and try again.", 'ai');
                 } finally {
-                    improveBtn.innerHTML = originalContent;
                     improveBtn.disabled = false;
                 }
             });
 
-            // Copy functionality
             copyBtn.addEventListener('click', async () => {
-                const textToCopy = promptOutput.innerText;
+                const results = chatContainer.querySelectorAll('.bubble-ai pre');
+                if (results.length === 0) return;
+
+                const lastResult = results[results.length - 1].innerText;
                 try {
-                    await navigator.clipboard.writeText(textToCopy);
-
-                    copyIcon.classList.add('hidden');
-                    copyText.classList.remove('hidden');
-                    copyBtn.classList.add('bg-primary/5', 'border-primary/30');
-
-                    setTimeout(() => {
-                        copyIcon.classList.remove('hidden');
-                        copyText.classList.add('hidden');
-                        copyBtn.classList.remove('bg-primary/5', 'border-primary/30');
-                    }, 2000);
+                    await navigator.clipboard.writeText(lastResult);
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> COPIED!';
+                    setTimeout(() => copyBtn.innerHTML = originalText, 2000);
                 } catch (err) {
                     console.error('Copy failed:', err);
                 }
             });
 
-            // Staggered Entrance
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
