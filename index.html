@@ -237,6 +237,62 @@
             border-bottom-right-radius: 0.25rem;
         }
 
+        .prompt-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .prompt-actions {
+            border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #181411;
+        }
+
+        .action-btn:hover {
+            background-color: rgba(242, 127, 13, 0.1);
+            border-color: #f27f0d;
+            color: #f27f0d;
+            transform: translateY(-1px);
+        }
+
+        .dark .action-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #e4e4e7;
+        }
+
+        .dark .action-btn:hover {
+            background-color: rgba(242, 127, 13, 0.15);
+            border-color: #f27f0d;
+            color: #f27f0d;
+        }
+
+        .action-btn .material-symbols-outlined {
+            font-size: 1rem;
+        }
+
+        .action-btn.copied {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            color: #22c55e;
+        }
+
         .chat-message-container {
             display: flex;
             flex-direction: column;
@@ -788,7 +844,68 @@
                 bubble.className = `chat-bubble bubble-${sender}`;
 
                 if (sender === 'ai' && text.includes('ROLE:')) {
-                    bubble.innerHTML = `<pre class="whitespace-pre-wrap font-mono text-sm leading-relaxed">${text}</pre>`;
+                    // Create the prompt content
+                    const promptContent = document.createElement('pre');
+                    promptContent.className = 'whitespace-pre-wrap font-mono text-sm leading-relaxed';
+                    promptContent.textContent = text;
+                    bubble.appendChild(promptContent);
+
+                    // Create action buttons container
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.className = 'prompt-actions';
+
+                    // Copy button
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'action-btn';
+                    copyButton.innerHTML = `
+                        <span class="material-symbols-outlined">content_copy</span>
+                        <span>Copy</span>
+                    `;
+                    copyButton.onclick = async () => {
+                        try {
+                            await navigator.clipboard.writeText(text);
+                            copyButton.classList.add('copied');
+                            copyButton.innerHTML = `
+                                <span class="material-symbols-outlined">check</span>
+                                <span>Copied!</span>
+                            `;
+                            setTimeout(() => {
+                                copyButton.classList.remove('copied');
+                                copyButton.innerHTML = `
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                    <span>Copy</span>
+                                `;
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy:', err);
+                        }
+                    };
+
+                    // Feedback button
+                    const feedbackButton = document.createElement('button');
+                    feedbackButton.className = 'action-btn';
+                    feedbackButton.innerHTML = `
+                        <span class="material-symbols-outlined">feedback</span>
+                        <span>Feedback</span>
+                    `;
+                    feedbackButton.onclick = () => {
+                        // Scroll to feedback section
+                        const feedbackSection = document.getElementById('feedback');
+                        if (feedbackSection) {
+                            showLandingView();
+                            setTimeout(() => {
+                                feedbackSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                const feedbackInput = feedbackSection.querySelector('input');
+                                if (feedbackInput) {
+                                    feedbackInput.focus();
+                                }
+                            }, 600);
+                        }
+                    };
+
+                    actionsDiv.appendChild(copyButton);
+                    actionsDiv.appendChild(feedbackButton);
+                    bubble.appendChild(actionsDiv);
                 } else {
                     bubble.textContent = text;
                 }
