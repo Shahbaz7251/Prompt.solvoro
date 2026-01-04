@@ -611,53 +611,24 @@
 
                     <!-- Feedback Input -->
                     <div class="mt-20 max-w-xl mx-auto" id="feedback">
-                        <form class="relative group">
-                            <input
-                                class="w-full pl-8 pr-28 py-5 rounded-full border border-border-base bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-sm text-sm font-medium"
-                                placeholder="Have a suggestion? Tell us here..." type="text" />
-                            <button
-                                class="absolute right-2 top-2 bottom-2 bg-background-dark text-white px-8 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 shadow-lg">Send</button>
+                        <form id="feedbackForm" class="flex flex-col gap-3 relative group">
+                            <input id="feedbackName"
+                                class="w-full pl-8 pr-8 py-5 rounded-full border border-border-base bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-sm text-sm font-medium"
+                                placeholder="Your Name (Optional)" type="text" />
+                            <div class="relative w-full">
+                                <input id="feedbackText" required
+                                    class="w-full pl-8 pr-28 py-5 rounded-full border border-border-base bg-white focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-sm text-sm font-medium"
+                                    placeholder="Have a suggestion? Tell us here..." type="text" />
+                                <button type="submit"
+                                    class="absolute right-2 top-2 bottom-2 bg-background-dark text-white px-8 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-95 shadow-lg">Send</button>
+                            </div>
+                            <p class="text-xs text-center text-gray-400 font-medium opacity-70">This will open your default email app.</p>
                         </form>
                     </div>
                 </div>
             </section>
 
-            <!-- Newsletter Section -->
-            <section class="max-w-4xl mx-auto px-6 mb-20 opacity-0 animate-fade-in-up stagger-1">
-                <div
-                    class="bg-background-dark rounded-[2.5rem] p-10 sm:p-20 text-center text-white relative overflow-hidden group">
-                    <!-- Abstract Accents -->
-                    <div
-                        class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[100px] -mr-48 -mt-48 transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 blur-[100px] -ml-48 -mb-48 transition-transform duration-700 group-hover:scale-110">
-                    </div>
 
-                    <div class="relative z-10">
-                        <div
-                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8 animate-float">
-                            <span class="material-symbols-outlined text-4xl text-primary">mail</span>
-                        </div>
-                        <h2 class="text-4xl sm:text-5xl font-black mb-6">Master the art of prompting.</h2>
-                        <p class="text-gray-400 mb-12 max-w-md mx-auto text-lg font-medium leading-relaxed">Get weekly
-                            tips
-                            on how to talk to AI models effectively. No spam, just prompts.</p>
-
-                        <form
-                            class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto p-2 bg-white/5 rounded-2xl border border-white/10">
-                            <input
-                                class="flex-1 bg-transparent border-0 text-white placeholder:text-gray-600 rounded-xl px-4 py-4 focus:ring-0 text-sm font-medium"
-                                placeholder="email@domain.com" type="email" />
-                            <button
-                                class="bg-primary hover:bg-primary-hover text-white font-black px-10 py-4 rounded-xl transition-all active:scale-95 shadow-xl shadow-primary/20"
-                                type="button">
-                                Subscribe
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
 
         </div>
 
@@ -713,7 +684,7 @@
                         <div class="chat-message-container" id="chatContainer">
                             <!-- Initial Message -->
                             <div class="chat-bubble bubble-ai" id="initialMessage">
-                                👋 Welcome! I'm your Prompt Architect. Paste your existing prompt below, and I'll
+                                👋 Welcome! I'm Prompt flow. Paste your existing prompt below, and I'll
                                 optimize it for maximum performance.
                             </div>
                         </div>
@@ -1093,6 +1064,28 @@ Current conversation so far: ${JSON.stringify(currentConversation)}`;
             }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
             document.querySelectorAll('.opacity-0.animate-fade-in-up').forEach(el => observer.observe(el));
+
+            // Feedback Form Handling
+            const feedbackForm = document.getElementById('feedbackForm');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const nameInput = document.getElementById('feedbackName');
+                    const reviewInput = document.getElementById('feedbackText');
+                    
+                    const name = nameInput.value.trim() || '';
+                    const review = reviewInput.value.trim();
+                    
+                    if (!review) return;
+
+                    const recipient = 'solvoro72@gmail.com';
+                    const subject = encodeURIComponent('New Review from Promptflow');
+                    const body = encodeURIComponent(`Name: ${name}\nReview: ${review}\nPage URL: ${window.location.href}`);
+
+                    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+                });
+            }
         });
     </script>
 </body>
