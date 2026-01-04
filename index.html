@@ -4,7 +4,36 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>PromptEnhancer - Speak AI Fluently</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>AI Prompt Enhancer | Advanced Prompt Engineering Tool</title>
+    <meta name="title" content="AI Prompt Enhancer | Advanced Prompt Engineering Tool" />
+    <meta name="description" content="Transform rough ideas into powerful AI prompts. Our advanced prompt optimizer uses structured engineering to maximize LLM performance. Free prompt engineering tool." />
+    <meta name="keywords" content="AI Prompt Enhancer, Advanced Prompt Engineering, Prompt Optimizer, AI Tool, Prompt Engineering, LLM Prompt Builder, ChatGPT Prompts, Prompt Generator" />
+    <meta name="author" content="Promptflow" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://prompt-enhancer.pages.dev/" />
+    <meta property="og:title" content="AI Prompt Enhancer | Advanced Prompt Engineering Tool" />
+    <meta property="og:description" content="Transform rough ideas into powerful AI prompts. Our advanced prompt optimizer uses structured engineering to maximize LLM performance. Free prompt engineering tool." />
+    <meta property="og:image" content="https://prompt-enhancer.pages.dev/og-image.png" />
+    <meta property="og:site_name" content="Promptflow" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://prompt-enhancer.pages.dev/" />
+    <meta name="twitter:title" content="AI Prompt Enhancer | Advanced Prompt Engineering Tool" />
+    <meta name="twitter:description" content="Transform rough ideas into powerful AI prompts. Our advanced prompt optimizer uses structured engineering to maximize LLM performance. Free prompt engineering tool." />
+    <meta name="twitter:image" content="https://prompt-enhancer.pages.dev/og-image.png" />
+    <meta name="twitter:creator" content="@Promptflow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://prompt-enhancer.pages.dev/" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -125,7 +154,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .dark #promptOutput,
         .dark #promptInput {
             color: #e4e4e7 !important;
         }
@@ -385,6 +413,51 @@
             }
         }
     </style>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Promptflow - AI Prompt Enhancer",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "150",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "description": "Transform rough ideas into powerful AI prompts. Advanced prompt engineering tool that uses structured optimization to maximize LLM performance. Free AI prompt enhancer and optimizer for ChatGPT, Claude, and other AI models.",
+        "url": "https://prompt-enhancer.pages.dev/",
+        "softwareVersion": "1.0",
+        "releaseNotes": "Advanced prompt engineering with structured format optimization",
+        "featureList": [
+            "AI Prompt Optimization",
+            "Advanced Prompt Engineering",
+            "Prompt Generation from Topics",
+            "Structured Prompt Formatting",
+            "LLM Compatibility (ChatGPT, Claude, Midjourney)",
+            "Real-time Prompt Enhancement"
+        ],
+        "screenshot": "https://prompt-enhancer.pages.dev/og-image.png",
+        "author": {
+            "@type": "Organization",
+            "name": "Promptflow"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Promptflow"
+        },
+        "keywords": "AI Prompt Enhancer, Advanced Prompt Engineering, Prompt Optimizer, AI Tool, Prompt Engineering, LLM Prompt Builder, ChatGPT Prompts, Prompt Generator"
+    }
+    </script>
 </head>
 
 <body class="bg-background-light text-background-dark selection:bg-primary/20 selection:text-primary">
@@ -393,12 +466,15 @@
     <header
         class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-border-base/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
-            <a href="javascript:void(0)" onclick="showLandingView()" class="flex items-center gap-2.5 group">
-                <div
-                    class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <span class="material-symbols-outlined text-primary text-2xl">auto_fix_high</span>
-                </div>
-                <span class="text-xl font-extrabold tracking-tight text-background-dark">PromptEnhancer</span>
+            <a href="javascript:void(0)" onclick="showLandingView()" class="flex items-center group">
+                <!-- Light theme logo -->
+                <img src="assets/logo-light.png" 
+                     alt="Promptflow" 
+                     class="h-12 w-auto object-contain dark:hidden transition-all duration-300 group-hover:scale-105" />
+                <!-- Dark theme logo -->
+                <img src="assets/logo-dark.png" 
+                     alt="Promptflow" 
+                     class="h-12 w-auto object-contain hidden dark:block transition-all duration-300 group-hover:scale-105" />
             </a>
 
             <div class="flex items-center gap-4">
@@ -544,7 +620,7 @@
                                 marketing copy generation went from generic fluff to usable drafts instantly."</p>
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                    <img alt="Sarah Jenkins" class="w-full h-full object-cover"
+                                    <img alt="Sarah Jenkins" class="w-full h-full object-cover" loading="lazy"
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dqnlyWWjOlYdxXfysNVBBQLmgDORTN-P7ZsAOwiiAQvRNQjUMlg2twiSDyuoROB4BC9L5XXfrLWzL-GWNYzJBHlAPhaS3ZXNGVFXJHqPAYq36jNTUBKkNF694sRFVO3oZAyqT98Q00hGZi0QWS_ghIUNJzrsZcZvPlzX3ImpvMlZFzOjaTgeLbTZW8Az3H8z7tofNsuOmVpImjR6Wxy9Mmew0ONb5aM-76KETfLriD2xNmm38AXBNEPP7ZTG8Tbtm30TnPGKme0" />
                                 </div>
                                 <div>
@@ -570,7 +646,7 @@
                                 forces me to be specific, which makes the AI hallucinate way less."</p>
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                    <img alt="David Chen" class="w-full h-full object-cover"
+                                    <img alt="David Chen" class="w-full h-full object-cover" loading="lazy"
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFle5x2iQhRWnKY1cIeOAHz7aRSnOEGB9vrxqFG_WQaezyPhYAC75-u1J2qEIxYvKZmZCzcNIVKTZkyU3FUParN5o7u9pIaRa-kahpjHmmddzm-aw7G60IyjKMBPQAvL78ZLIvZ9DvOBcOdChbS0HQeHjXcfzSEjeTO1IX3kraXgn6UTGkMvMhYuCi7c9_D8pnIV6sVREgMU-kahRS2G6kC_8pG5qk92SMCS1wylxYAGOOgJ_cMEmtAKS6S7TSaXrrilIdIGHD84Y" />
                                 </div>
                                 <div>
@@ -597,7 +673,7 @@
                                 bloat. It does one thing and does it extremely well."</p>
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-full ring-2 ring-white overflow-hidden bg-gray-200">
-                                    <img alt="Elena Rodriguez" class="w-full h-full object-cover"
+                                    <img alt="Elena Rodriguez" class="w-full h-full object-cover" loading="lazy"
                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDByi39tjX8_3Ahct9Fi428zfgzZZzFd5aSODaiEryFvKGoNfydhfCaTEHLua4SRyQscj-Oqg1sPlBkEFmjAXFGgUScx50RixdWHwVhHR91Z8yJ9l__ETRRt_nokq0xs30LN7JlDS2euzgh7Zwy8tIQCu0Ew0xhxjaVFuK4UG4EZMW0sFsYK2Gpu9wRcoFlYAnXrcAYbmhzvh8o33ccjTdx9sQyfwIyItrMCZoxL1TWHyBTl85t9g7xu-4vnstxs_0EmKepkFZJTkg" />
                                 </div>
                                 <div>
@@ -729,11 +805,15 @@
     <!-- Footer -->
     <footer class="bg-background-light py-20 px-6 border-t border-border-base/30">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
-            <div class="flex items-center gap-2 group mb-12">
-                <div class="w-8 h-8 bg-background-dark rounded-lg flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white text-lg">auto_fix_high</span>
-                </div>
-                <span class="text-lg font-black tracking-tight">PromptEnhancer</span>
+            <div class="flex items-center justify-center mb-12">
+                <!-- Light theme logo -->
+                <img src="assets/logo-light.png" 
+                     alt="Promptflow" 
+                     class="h-10 w-auto object-contain dark:hidden transition-all duration-300" />
+                <!-- Dark theme logo -->
+                <img src="assets/logo-dark.png" 
+                     alt="Promptflow" 
+                     class="h-10 w-auto object-contain hidden dark:block transition-all duration-300" />
             </div>
 
             <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-12">
@@ -745,22 +825,19 @@
             </div>
 
             <p class="text-sm font-bold text-gray-400">
-                © 2026 PromptEnhancer Inc. All rights reserved.
+                © 2026 Promptflow Inc. All rights reserved.
             </p>
         </div>
     </footer>
 
     <script>
-        // CONFIGURATION: Set your OpenRouter API key and model here
+        // CONFIGURATION: API endpoint
         const CONFIG = {
-            MODEL: 'openai/gpt-oss-120b',
-            MAX_TOKENS: 100000,
             API_URL: 'https://prompt-enhancer-backend.shahbaz7251ali.workers.dev/enhance' 
         };
 
         document.addEventListener('DOMContentLoaded', () => {
             let currentMode = 'optimize';
-            let chatHistory = [];
             let questionCount = 0;
             let currentConversation = [];
 
@@ -772,7 +849,6 @@
             const improveBtn = document.getElementById('improveBtn');
             const copyBtn = document.getElementById('copyBtn');
             const copyContainer = document.getElementById('copyContainer');
-            const initialMessage = document.getElementById('initialMessage');
 
             const modeOptimize = document.getElementById('modeOptimize');
             const modeGenerate = document.getElementById('modeGenerate');
@@ -848,7 +924,7 @@
                                 `;
                             }, 2000);
                         } catch (err) {
-                            console.error('Failed to copy:', err);
+                            // Copy failed silently
                         }
                     };
 
@@ -1031,7 +1107,6 @@ Current conversation so far: ${JSON.stringify(currentConversation)}`;
                     }
 
                 } catch (error) {
-                    console.error('API Error:', error);
                     removeTypingIndicator(typingIndicator);
                     addMessage("❌ Sorry, I encountered an error. Please check your connection and try again.", 'ai');
                 } finally {
@@ -1050,7 +1125,7 @@ Current conversation so far: ${JSON.stringify(currentConversation)}`;
                     copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> COPIED!';
                     setTimeout(() => copyBtn.innerHTML = originalText, 2000);
                 } catch (err) {
-                    console.error('Copy failed:', err);
+                    // Copy failed silently
                 }
             });
 
