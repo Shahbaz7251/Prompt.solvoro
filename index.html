@@ -44,6 +44,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
 
+    <!-- Preload critical logos -->
+    <link rel="preload" as="image" href="assets/logo-light.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/logo-dark.png" fetchpriority="high" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -63,9 +67,9 @@
                         "mono": ["'JetBrains Mono'", "monospace"]
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                        'scale-in': 'scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in-up': 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'scale-in': 'scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                         'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
@@ -100,7 +104,7 @@
             background: rgba(248, 247, 245, 0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            transition: all 0.5s ease;
+            transition: all 0.2s ease;
         }
 
         .dark .glass-header {
@@ -184,23 +188,23 @@
         }
 
         .stagger-1 {
-            animation-delay: 0.1s;
+            animation-delay: 0s;
         }
 
         .stagger-2 {
-            animation-delay: 0.2s;
+            animation-delay: 0.05s;
         }
 
         .stagger-3 {
-            animation-delay: 0.3s;
+            animation-delay: 0.1s;
         }
 
         .stagger-4 {
-            animation-delay: 0.4s;
+            animation-delay: 0.15s;
         }
 
         .stagger-5 {
-            animation-delay: 0.5s;
+            animation-delay: 0.2s;
         }
 
         /* Hide scrollbar but keep functionality */
@@ -464,17 +468,25 @@
 
     <!-- Top Navigation -->
     <header
-        class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-border-base/50 transition-all duration-300">
+        class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-border-base/50 transition-all duration-150">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
             <a href="javascript:void(0)" onclick="showLandingView()" class="flex items-center group">
                 <!-- Light theme logo -->
                 <img src="assets/logo-light.png" 
                      alt="Promptflow" 
-                     class="h-12 w-auto object-contain dark:hidden transition-all duration-300 group-hover:scale-105" />
+                     width="120"
+                     height="48"
+                     fetchpriority="high"
+                     decoding="async"
+                     class="h-12 w-auto object-contain dark:hidden transition-all duration-150 group-hover:scale-105" />
                 <!-- Dark theme logo -->
                 <img src="assets/logo-dark.png" 
                      alt="Promptflow" 
-                     class="h-12 w-auto object-contain hidden dark:block transition-all duration-300 group-hover:scale-105" />
+                     width="120"
+                     height="48"
+                     fetchpriority="high"
+                     decoding="async"
+                     class="h-12 w-auto object-contain hidden dark:block transition-all duration-150 group-hover:scale-105" />
             </a>
 
             <div class="flex items-center gap-4">
@@ -491,7 +503,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobileMenu"
-        class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+        class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-200 ease-in-out md:hidden">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between h-20 px-8 border-b border-border-base">
                 <span class="text-xl font-extrabold tracking-tight">Menu</span>
@@ -500,10 +512,6 @@
                 </button>
             </div>
             <nav class="flex flex-col p-8 gap-8">
-                <a class="mobile-nav-link text-2xl font-bold text-gray-900 hover:text-primary transition-colors"
-                    href="#how-it-works">How it works</a>
-                <a class="mobile-nav-link text-2xl font-bold text-gray-900 hover:text-primary transition-colors"
-                    href="#examples">Examples</a>
                 <a class="mobile-nav-link text-2xl font-bold text-gray-900 hover:text-primary transition-colors"
                     href="#feedback">Feedback</a>
             </nav>
@@ -517,9 +525,9 @@
 
     <main class="pt-32 pb-20 overflow-hidden">
 
-        <div id="landingView" class="transition-all duration-500">
+        <div id="landingView" class="transition-all duration-200">
             <!-- Hero Section -->
-            <section class="max-w-4xl mx-auto px-6 text-center mb-16 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
+            <section class="max-w-4xl mx-auto px-6 text-center mb-16 sm:mb-20">
 
                 <h1 id="magicHero"
                     class="text-5xl sm:text-8xl font-black leading-[1.05] tracking-tight text-background-dark mb-6 sm:mb-8 cursor-pointer select-none transition-transform active:scale-95">
@@ -541,52 +549,11 @@
 
                 <div class="flex justify-center">
                     <button onclick="showToolView()"
-                        class="group relative flex items-center justify-center gap-4 bg-primary hover:bg-primary-hover text-white text-xl sm:text-2xl font-black py-6 px-12 rounded-[2rem] shadow-2xl shadow-primary/30 transition-all duration-300 transform active:scale-[0.98] hover:-translate-y-1">
+                        class="group relative flex items-center justify-center gap-4 bg-primary hover:bg-primary-hover text-white text-xl sm:text-2xl font-black py-6 px-12 rounded-[2rem] shadow-2xl shadow-primary/30 transition-all duration-150 transform active:scale-[0.98] hover:-translate-y-1">
                         <span>Improve Prompt</span>
                         <span
-                            class="material-symbols-outlined text-3xl group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
+                            class="material-symbols-outlined text-3xl group-hover:translate-x-2 transition-transform duration-150">arrow_forward</span>
                     </button>
-                </div>
-            </section>
-            <!-- Process Section -->
-            <section class="max-w-5xl mx-auto px-6 mb-24 sm:mb-40" id="how-it-works">
-                <div class="text-center mb-12 sm:mb-20 opacity-0 animate-fade-in-up stagger-1">
-                    <h2 class="text-3xl sm:text-4xl font-black mb-4">Science, not magic.</h2>
-                    <p class="text-gray-500 font-medium text-base sm:text-lg">We structure your intent into a format
-                        LLMs
-                        are trained to prioritize.</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-12 sm:gap-16">
-                    <!-- Step 1 -->
-                    <div
-                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-2">
-                        <span
-                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">01</span>
-                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Input Context</h3>
-                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Paste your rough idea,
-                            fragmented sentences, or bullet points. Don't worry about grammar.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div
-                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-3">
-                        <span
-                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">02</span>
-                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Structural Enhancement</h3>
-                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Our engine assigns
-                            roles,
-                            defines constraints, and clarifies output formats for maximum precision.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div
-                        class="flex flex-col items-center md:items-start text-center md:text-left group opacity-0 animate-fade-in-up stagger-4">
-                        <span
-                            class="text-7xl sm:text-8xl font-black text-gray-100 mb-4 sm:mb-6 group-hover:text-primary/10 transition-colors duration-500 leading-none">03</span>
-                        <h3 class="text-xl sm:text-2xl font-extrabold mb-3 sm:mb-4">Execute</h3>
-                        <p class="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">Copy the result
-                            directly
-                            into ChatGPT, Claude, or Midjourney. Get the answer you actually wanted.</p>
-                    </div>
                 </div>
             </section>
 
@@ -607,7 +574,7 @@
                     <div class="grid md:grid-cols-3 gap-8">
                         <!-- Card 1 -->
                         <div
-                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-150 group">
                             <div class="flex gap-1 text-primary mb-6">
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
@@ -633,7 +600,7 @@
 
                         <!-- Card 2 -->
                         <div
-                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-150 group">
                             <div class="flex gap-1 text-primary mb-6">
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
@@ -660,7 +627,7 @@
 
                         <!-- Card 3 -->
                         <div
-                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-300 group">
+                            class="p-8 border border-border-base rounded-3xl bg-background-light/50 hover:bg-white hover:border-primary/20 hover:shadow-xl transition-all duration-150 group">
                             <div class="flex gap-1 text-primary mb-6">
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
                                 <span class="material-symbols-outlined text-sm fill-current">star</span>
@@ -708,7 +675,7 @@
 
         </div>
 
-        <div id="toolView" class="hidden opacity-0 transition-all duration-500 max-w-6xl mx-auto px-4 sm:px-6">
+        <div id="toolView" class="hidden opacity-0 transition-all duration-200 max-w-6xl mx-auto px-4 sm:px-6">
             <div class="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
                     <h2 class="text-3xl font-black text-background-dark mb-2">Optimize Your Prompt</h2>
@@ -809,11 +776,19 @@
                 <!-- Light theme logo -->
                 <img src="assets/logo-light.png" 
                      alt="Promptflow" 
-                     class="h-10 w-auto object-contain dark:hidden transition-all duration-300" />
+                     width="100"
+                     height="40"
+                     loading="lazy"
+                     decoding="async"
+                     class="h-10 w-auto object-contain dark:hidden transition-all duration-150" />
                 <!-- Dark theme logo -->
                 <img src="assets/logo-dark.png" 
                      alt="Promptflow" 
-                     class="h-10 w-auto object-contain hidden dark:block transition-all duration-300" />
+                     width="100"
+                     height="40"
+                     loading="lazy"
+                     decoding="async"
+                     class="h-10 w-auto object-contain hidden dark:block transition-all duration-150" />
             </div>
 
             <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-12">
@@ -995,8 +970,8 @@
                     setTimeout(() => {
                         toolView.classList.remove('opacity-0');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 50);
-                }, 500);
+                    }, 10);
+                }, 200);
             };
 
             window.showLandingView = () => {
@@ -1009,8 +984,8 @@
                     setTimeout(() => {
                         landingView.classList.remove('opacity-0', 'pointer-events-none');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 50);
-                }, 500);
+                    }, 10);
+                }, 200);
             };
 
             const toggleMenu = () => {
